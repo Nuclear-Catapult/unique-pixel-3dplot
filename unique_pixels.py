@@ -1,17 +1,9 @@
-# https://stackoverflow.com/a/1109747
-
 import matplotlib.pyplot as plt
 from PIL import Image
 
 im = Image.open('pic0000.bmp')
 
-pixels = list(im.getdata())
-width, height = im.size
-
-pixels = [pixels[i * width:(i + 1) * width] for i in range(height)]
-
-# filter every unique pixel
-pixels = set([j for sub in pixels for j in sub])
+pixels = set(im.getdata())
 
 x = [j[0] for j in pixels]
 y = [j[1] for j in pixels]
@@ -29,5 +21,5 @@ ax.set_zlim3d(0, 255)
 
 # Creating plot 
 ax.scatter(x, y, z, c = colors); 
-plt.title("simple 3D scatter plot", ) 
+plt.title("Every Unique Pixel", ) 
 plt.show()
