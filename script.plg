@@ -1,0 +1,13 @@
+set title 'Unique Pixels'
+
+set xlabel "Red"
+set ylabel "Green"
+set zlabel "Blue"
+
+set xrange [0:255]
+set yrange [0:255]
+set zrange [0:255]
+
+rgb(r,g,b) = 65536 * int(r) + 256 * int(g) + int(b)
+splot "pixels.data" using 1:2:3:(rgb($1,$2,$3)) with points lc rgb variable
+pause -1
